@@ -1,8 +1,5 @@
-print("antes de sair, informe quantos km deseja percorrer, levando em consideração que <200km = R$ 1,50 e >200km = R$ 1,00")
-quant = float(input("PERCURSO:"))
-
-if quant <= 200: 
-    print("\no valor do percurso é: R$", quant*1.5)
-
-elif quant >= 200:
-    print("\no valor do percurso é: R$", quant)
+Cálculo de Média Simples
+ Desenvolva uma função chamada `calcular_media` que receba três números e retorne a média
+entre eles.
+ Exemplo de entrada: `calcular_media(5, 7, 10)`
+ Saída esperada: `7.33`

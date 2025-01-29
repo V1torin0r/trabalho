@@ -1,6 +1,15 @@
-print("Bem-vinde ao programa de proporção salarial promivido pelo presidente da republica Gustavo Lima\n\n")
-sal = float(input("por favor, digite sua valoração salarial referente à emissão de seu ultimo contracheque\n\n"))
-percent = float(input("Digite sua proporcinalidade percentual de acordo com as regras de taxação da receita\n\n"))
-perc = (percent/100)*sal 
-print("Muito bem, seu novo selário é: ", (sal+perc))
+# Cálculo de Soma com Valor Padrão
+#  Crie uma função chamada `soma` que receba dois números como parâmetros. Caso apenas um
+# número seja fornecido, o segundo parâmetro deve assumir o valor `10` por padrão.
+#  Exemplo de entrada: `soma(5)`
+# Saída esperada: `15`
 
+
+def soma(n1 = 10, n2 = 10):
+    
+    somar = n1 + n2
+   
+    
+    return somar
+
+print(f"o resultado da soma é: ", soma(5))

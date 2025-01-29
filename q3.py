@@ -1,8 +1,20 @@
-print("A policia federal decidiu dispor das dividas relacionadas ao aluguel do carro feito pelo seu cpf (talvez isso seja uma ameaça)\n\n")
-d = int(input("First, Diga quantos dias o elemento passou com o carro\n"))
-km = float(input("Agora, diga quantos km foram rodados até o momento\n"))
+# 3. Maior de Dois Números
+#  Crie uma função chamada `maior_numero` que receba dois números e retorne qual deles é o
+# maior.
+#  Exemplo de entrada: `maior_numero(8, 5)`
+#  Saída esperada: `8`
 
-kmm = km/2
-dd = d*120
 
-print ("Bom fazendo as somas aqui, a ponta a ser pagada é de: R$", kmm+dd)
+def maior_numero(n1, n2):
+    if n1 > n2:
+        print("O maior número é:", n1)
+        
+    elif n1 == n2:
+        print("Os números são iguais")
+        
+    else:
+        n1 < n2 
+        print("O maior número é:", n2)
+        
+maior_numero(2, 4)
+        
