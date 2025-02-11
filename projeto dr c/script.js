@@ -20,3 +20,20 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', checkVisibility);
     checkVisibility(); // Verifica a visibilidade inicial
 });
+
+// Função para destacar a imagem e mostrar o texto
+function highlightContent() {
+    // Seleciona a imagem, o texto e o fundo
+    const image = document.querySelector('.image');
+    const text = document.querySelector('.text');
+    const body = document.body;
+
+    // Adiciona ou remove a classe 'highlight' para aplicar o efeito na imagem
+    image.classList.toggle('highlight');
+
+    // Adiciona a classe 'show-text' para tornar o texto visível
+    text.classList.add('show-text');
+
+    // Adiciona ou remove a classe 'darken' para escurecer o fundo
+    body.classList.toggle('darken');
+}

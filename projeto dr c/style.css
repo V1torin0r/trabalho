@@ -2,9 +2,10 @@
 .scroll-section {
     display: flex;
     align-items: center;
-    height: 100vh;
+    height: 70vh;
     padding: 20px;
     box-sizing: border-box;
+    align-items: flex-start;
 }
 
 .content {
@@ -32,4 +33,110 @@
     font-size: 1.2em;
     color: #333;
     margin: 0;
+}
+
+
+header {
+    justify-content: center;
+    position: relative;
+
+    display: flex;
+    flex-wrap: 1;
+    align-items: center;
+    left: 5%;
+    flex-direction: row;
+    flex-grow: 1;
+    border-style: solid ;
+    border-radius: 25px;
+    border-color: #0f360d;
+    height: 200px;
+    max-width: 90%;
+    flex-flow: 1;
+    padding: 20px;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.082)
+
+}
+.logo {
+    max-width: 80%; 
+    height: auto; 
+    display: block;
+    filter: contrast(1.7) brightness(1.4);
+
+}
+
+        /* Estilo inicial da página */
+ body {
+margin: 0;
+padding: 0;
+transition: background-color 0.5s ease; /* Transição suave para o fundo */
+}
+
+        /* Container principal */
+        .container {
+            display: flex;
+            align-items: flex-start; /* Alinha a imagem e o conteúdo ao topo */
+        }
+
+        /* Coluna da imagem */
+        .image-column {
+            width: 30%; /* Largura da coluna da imagem */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Estilo da imagem */
+        .image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.7; /* Imagem levemente transparente inicialmente */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Transição suave */
+        }
+
+        /* Coluna do conteúdo */
+        .content-column {
+            width: 70%; /* Largura da coluna do conteúdo */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Estilo do texto (inicialmente invisível) */
+        .text {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #333;
+            opacity: 0; /* Texto invisível inicialmente */
+            transition: opacity 0.5s ease; /* Transição suave */
+        }
+
+        /* Estilo do botão */
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Classe para aplicar quando o botão é clicado */
+        .highlight {
+            opacity: 1; /* Torna a imagem e o texto totalmente visíveis */
+            transform: scale(1.1); /* Aumenta ligeiramente a imagem */
+        }
+
+        .darken {
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo escurecido e transparente */
+        }
+
+.show-text {
+opacity: 1; /* Torna o texto visível */
 }

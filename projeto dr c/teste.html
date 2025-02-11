@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destaque com Botão</title>
+    <style>
+        /* Estilo inicial da página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            transition: background-color 0.5s ease; /* Transição suave para o fundo */
+        }
+
+        /* Container principal */
+        .container {
+            display: flex;
+            align-items: flex-start; /* Alinha a imagem e o conteúdo ao topo */
+        }
+
+        /* Coluna da imagem */
+        .image-column {
+            width: 30%; /* Largura da coluna da imagem */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Estilo da imagem */
+        .image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.7; /* Imagem levemente transparente inicialmente */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Transição suave */
+        }
+
+        /* Coluna do conteúdo */
+        .content-column {
+            width: 70%; /* Largura da coluna do conteúdo */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Estilo do texto (inicialmente invisível) */
+        .text {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #333;
+            opacity: 0; /* Texto invisível inicialmente */
+            transition: opacity 0.5s ease; /* Transição suave */
+        }
+
+        /* Estilo do botão */
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Classe para aplicar quando o botão é clicado */
+        .highlight {
+            opacity: 1; /* Torna a imagem e o texto totalmente visíveis */
+            transform: scale(1.1); /* Aumenta ligeiramente a imagem */
+        }
+
+        .darken {
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo escurecido e transparente */
+        }
+
+        .show-text {
+            opacity: 1; /* Torna o texto visível */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Coluna da imagem -->
+        <div class="image-column">
+            <img src="Para.jpg" alt="Imagem de Exemplo" class="image">
+        </div>
+
+        <!-- Coluna do conteúdo -->
+        <div class="content-column">
+            <!-- Botão -->
+            <button class="button" onclick="highlightContent()">botão</button>
+
+            <!-- Texto (inicialmente invisível) -->
+            <p class="text">Este é um texto de exemplo que só aparece quando o botão é clicado.</p>
+        </div>
+    </div>
+
+    <script>
+        // Função para destacar a imagem e mostrar o texto
+        function highlightContent() {
+            // Seleciona a imagem, o texto e o fundo
+            const image = document.querySelector('.image');
+            const text = document.querySelector('.text');
+            const body = document.body;
+
+            // Adiciona ou remove a classe 'highlight' para aplicar o efeito na imagem
+            image.classList.toggle('highlight');
+
+            // Adiciona a classe 'show-text' para tornar o texto visível
+            text.classList.add('show-text');
+
+            // Adiciona ou remove a classe 'darken' para escurecer o fundo
+            body.classList.toggle('darken');
+        }
+    </script>
+</body>
+</html>
