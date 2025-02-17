@@ -3,57 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destaque com Botão</title>
+    <title>Document</title>
     <style>
-        /* Estilo inicial da página */
+        /* Estilos gerais */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            transition: background-color 0.5s ease; /* Transição suave para o fundo */
+            transition: background-color 0.5s ease;
         }
 
-        /* Container principal */
-        .container {
+        .scroll-section {
             display: flex;
-            align-items: flex-start; /* Alinha a imagem e o conteúdo ao topo */
-        }
-
-        /* Coluna da imagem */
-        .image-column {
-            width: 30%; /* Largura da coluna da imagem */
+            align-items: center;
+            height: 90rem;
             padding: 20px;
             box-sizing: border-box;
         }
 
-        /* Estilo da imagem */
-        .image {
-            max-width: 100%;
+        .content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content img {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            color: #333;
+            margin: 0;
+        }
+
+        header {
+            justify-content: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            left: 5%;
+            border-style: solid;
+            border-radius: 25px;
+            border-color: #0f360d;
+            height: 200px;
+            max-width: 90%;
+            padding: 20px;
+            margin: 0;
+            background-color: rgba(255, 255, 255, 0.082);
+        }
+
+        .logo {
+            max-width: 80%;
             height: auto;
             display: block;
-            opacity: 0.7; /* Imagem levemente transparente inicialmente */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Transição suave */
+            filter: contrast(1.7) brightness(1.4);
         }
 
-        /* Coluna do conteúdo */
-        .content-column {
-            width: 70%; /* Largura da coluna do conteúdo */
-            padding: 20px;
-            box-sizing: border-box;
+        .image {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            transition: all 0.3s ease;
         }
 
-        /* Estilo do texto (inicialmente invisível) */
+        .highlight4 {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            z-index: 1000;
+        }
+
         .text {
-            margin-top: 20px;
-            font-size: 1.5em;
-            color: #333;
-            opacity: 0; /* Texto invisível inicialmente */
-            transition: opacity 0.5s ease; /* Transição suave */
+            display: none;
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1000;
+            color: white;
         }
 
-        /* Estilo do botão */
+        .show-text {
+            display: block;
+        }
+
+        .darken {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
         .button {
+            margin-left: 20px;
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 1em;
@@ -68,55 +122,75 @@
         .button:hover {
             background-color: #0056b3;
         }
-
-        /* Classe para aplicar quando o botão é clicado */
-        .highlight {
-            opacity: 1; /* Torna a imagem e o texto totalmente visíveis */
-            transform: scale(1.1); /* Aumenta ligeiramente a imagem */
-        }
-
-        .darken {
-            background-color: rgba(0, 0, 0, 0.7); /* Fundo escurecido e transparente */
-        }
-
-        .show-text {
-            opacity: 1; /* Torna o texto visível */
-        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Coluna da imagem -->
-        <div class="image-column">
-            <img src="Para.jpg" alt="Imagem de Exemplo" class="image">
-        </div>
+    <section class="scroll-section">
+        <div class="container">
+            <!-- Coluna da imagem -->
+            <div class="content">
+                <img src="Para.jpg" alt="Imagem de Exemplo" class="image" id="img4">
+            </div>
 
-        <!-- Coluna do conteúdo -->
-        <div class="content-column">
-            <!-- Botão -->
-            <button class="button" onclick="highlightContent()">botão</button>
+            <!-- Coluna do conteúdo -->
+            <div class="content">
+                <!-- Botão -->
+                <button class="button" onclick="highlightContent4()">botão</button>
 
-            <!-- Texto (inicialmente invisível) -->
-            <p class="text">Este é um texto de exemplo que só aparece quando o botão é clicado.</p>
+                <!-- Texto (inicialmente invisível) -->
+                <p class="text">Este é um texto de exemplo que só aparece quando o botão é clicado.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
     <script>
-        // Função para destacar a imagem e mostrar o texto
-        function highlightContent() {
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.scroll-section .content');
+
+            const checkVisibility = () => {
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const sectionBottom = section.getBoundingClientRect().bottom;
+
+                    // Verifica se a seção está visível na tela
+                    if (sectionTop < window.innerHeight * 0.75 && sectionBottom > 0) {
+                        section.classList.add('visible');
+                    } else {
+                        section.classList.remove('visible');
+                    }
+                });
+            };
+
+            // Verifica a visibilidade ao carregar a página e ao rolar
+            window.addEventListener('scroll', checkVisibility);
+            window.addEventListener('resize', checkVisibility);
+            checkVisibility(); // Verifica a visibilidade inicial
+        });
+
+        function highlightContent4() {
             // Seleciona a imagem, o texto e o fundo
-            const image = document.querySelector('.image');
+            const image4 = document.querySelector('#img4');
             const text = document.querySelector('.text');
             const body = document.body;
 
-            // Adiciona ou remove a classe 'highlight' para aplicar o efeito na imagem
-            image.classList.toggle('highlight');
+            // Adiciona ou remove a classe 'highlight4' para aplicar o efeito na imagem
+            image4.classList.toggle('highlight4');
 
-            // Adiciona a classe 'show-text' para tornar o texto visível
-            text.classList.add('show-text');
+            // Adiciona ou remove a classe 'show-text' para tornar o texto visível
+            text.classList.toggle('show-text');
 
             // Adiciona ou remove a classe 'darken' para escurecer o fundo
             body.classList.toggle('darken');
+
+            // Adiciona um evento de clique no documento para retornar a imagem ao estado original
+            document.addEventListener('click', function(event) {
+                // Verifica se o clique foi fora da imagem
+                if (!image4.contains(event.target)) {
+                    image4.classList.remove('highlight4');
+                    text.classList.remove('show-text');
+                    body.classList.remove('darken');
+                }
+            }, { once: true }); // O evento é removido após ser executado uma vez
         }
     </script>
 </body>
